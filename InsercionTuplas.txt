@@ -1,1 +1,124 @@
+--Creacion de indices y tuplas
+--Tabla Institucion
+INSERT INTO Institucion VALUES (1, 'Instituto Tecnológico Autónomo de México', 'ITAM');
+INSERT INTO Institucion VALUES (2, 'Universidad Iberoamericana', 'IBERO');
+INSERT INTO Institucion VALUES (3, 'Instituto Tecnológico y de Estudios Superiores de Monterrey', 'ITESM');
+INSERT INTO Institucion VALUES (4, 'Universidad Nacional Autónoma de México', 'UNAM');
+INSERT INTO Institucion VALUES (5, 'Instituto Politécnico Nacional', 'IPN');
+--Tabla Carrera
+INSERT INTO Carrera VALUES (100, 'Ing. en Computación', 'Ingeniería');
+INSERT INTO Carrera VALUES (101, 'Ing. en Telemática', 'Ingeniería');
+INSERT INTO Carrera VALUES (102, 'Ma. en Ciencias en Computación', 'Ingeniería');
+INSERT INTO Carrera VALUES (200, 'Lic. en Matemáticas', 'Ciencias Exactas');
+INSERT INTO Carrera VALUES (300, 'Lic. en Economía', 'Economía');
+INSERT INTO Carrera VALUES (400, 'Lic. en Filosofía', 'Filosofía y Letras');
+INSERT INTO Carrera VALUES (401, 'Lic. en Literatura Latinoamericana', 'Filosofía y Letras');
+INSERT INTO Carrera VALUES (500, 'Lic. en Derecho', 'Derecho');
+INSERT INTO Carrera VALUES (600, 'Lic. en Médico Cirujano', 'Medicina');
+--Tabla InstituciónCarrera
+INSERT INTO InstitucionCarrera VALUES (1, 100, 8, 320);
+INSERT INTO InstitucionCarrera VALUES (1, 101, 8, 304);
+INSERT INTO InstitucionCarrera VALUES (1, 102, 4, 84);
+INSERT INTO InstitucionCarrera VALUES (1, 200, 8, 280);
+INSERT INTO InstitucionCarrera VALUES (1, 300, 8, 290);
+INSERT INTO InstitucionCarrera VALUES (2, 400, 8, 340);
+INSERT INTO InstitucionCarrera VALUES (2, 401, 8, 320);
+INSERT INTO InstitucionCarrera VALUES (2, 500, 12, 470);
+INSERT INTO InstitucionCarrera VALUES (3, 100, 9, 216);
+INSERT INTO InstitucionCarrera VALUES (3, 600, 12, 520);
+INSERT INTO InstitucionCarrera VALUES (4, 100, 10, 384);
+INSERT INTO InstitucionCarrera VALUES (4, 101, 8, 328);
+INSERT INTO InstitucionCarrera VALUES (4, 102, 4, 96);
+INSERT INTO InstitucionCarrera VALUES (4, 200, 8, 352);
+INSERT INTO InstitucionCarrera VALUES (4, 300, 8, 295);
+INSERT INTO InstitucionCarrera VALUES (4, 400, 8, 280);
+INSERT INTO InstitucionCarrera VALUES (4, 401, 8, 344);
+INSERT INTO InstitucionCarrera VALUES (4, 500, 12, 450);
+INSERT INTO InstitucionCarrera VALUES (4, 600, 12, 510);
+INSERT INTO InstitucionCarrera VALUES (5, 100, 8, 357);
+--Tabla Ciudad
+INSERT INTO Ciudad VALUES (10, 'Ciudad de México', 'CDMX');
+INSERT INTO Ciudad VALUES (20, 'San Andrés Cholula', 'Puebla');
+INSERT INTO Ciudad VALUES (30, 'Monterrey', 'Nuevo León');
+INSERT INTO Ciudad VALUES (40, 'Ciudad Administrativa', 'Zacatecas');
+--Tabla Campus
+INSERT INTO Campus VALUES (11, 'Río Hondo', 'Río Hondo 1, Altavista, Álvaro Obregón, 01080', '5556284000', 10, 32);
+INSERT INTO Campus VALUES (12, 'Santa Teresa','Av, Camino Sta. Teresa #930, Héroes de Padierna, La Magdalena Contreras, 10700', '5556284000', 10, 11);
+INSERT INTO Campus VALUES (21, 'Santa Fe', 'Prol. P. de la Reforma, Santa Fe, Zedec Sta Fé, Álvaro Obregón, 01376', '5559504000', 10, 12);
+INSERT INTO Campus VALUES (22, 'Puebla', 'Blvrd del Niño Poblano 2901, Unidad Territorial Atlixcóyotl, Centro Comercial Puebla, 72820', '2223723000', 20, 16);
+INSERT INTO Campus VALUES (31, 'Monterrey', 'Av. Eugenio Garza Sada 2501 Sur, Tecnológico, 64849', '8183582000', 30, 29);
+INSERT INTO Campus VALUES (41, 'Ciudad Universitaria', 'Av. Universidad 3004, Copilco Universidad, Coyoacán, 04510', '5556220000', 10, 209);
+INSERT INTO Campus VALUES (51, 'ESCOM', 'Av. Juan de Dios Bátiz, Nueva Industrial Vallejo, Gustavo A. Madero, 07320', '5557296000', 10, 39);
+INSERT INTO Campus VALUES (52, 'UPIIZ', 'Calle Circuito del Gato 202, 98160', '4929242419', 40, 26);
+--Tabla CampusCarrera
+INSERT INTO CampusCarrera VALUES (11, 1, 100, null);
+INSERT INTO CampusCarrera VALUES (11, 1, 200, null);
+INSERT INTO CampusCarrera VALUES (11, 1, 300, null);
+INSERT INTO CampusCarrera VALUES (12, 1, 101, null);
+INSERT INTO CampusCarrera VALUES (12, 1, 102, null);
+INSERT INTO CampusCarrera VALUES (21, 2, 400, null);
+INSERT INTO CampusCarrera VALUES (21, 2, 401, null);
+INSERT INTO CampusCarrera VALUES (22, 2, 500, null);
+INSERT INTO CampusCarrera VALUES (31, 3, 100, null);
+INSERT INTO CampusCarrera VALUES (31, 3, 600, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 100, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 101, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 102, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 200, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 300, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 400, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 401, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 500, null);
+INSERT INTO CampusCarrera VALUES (41, 4, 600, null);
+INSERT INTO CampusCarrera VALUES (51, 5, 100, null);
+INSERT INTO CampusCarrera VALUES (52, 5, 100, null);
+--Tabla Servicios
+INSERT INTO Servicio VALUES (1, 'Cafetería');
+INSERT INTO Servicio VALUES (2, 'Laboratorio');
+INSERT INTO Servicio VALUES (3, 'Cancha fútbol');
+INSERT INTO Servicio VALUES (4, 'Cancha baloncesto');
+INSERT INTO Servicio VALUES (5, 'Biblioteca');
+--Tabla CampusServicios
+INSERT INTO CampusServicio VALUES (11,1,1,1);
+INSERT INTO CampusServicio VALUES (11,2,0,1);
+INSERT INTO CampusServicio VALUES (11,3,0,1);
+INSERT INTO CampusServicio VALUES (11,4,0,1);
+INSERT INTO CampusServicio VALUES (11,5,0,1);
+INSERT INTO CampusServicio VALUES (12,5,0,1);
+INSERT INTO CampusServicio VALUES (21,5,0,1);
+INSERT INTO CampusServicio VALUES (21,2,0,1);
+INSERT INTO CampusServicio VALUES (22,3,0,0);
+INSERT INTO CampusServicio VALUES (22,5,0,1);
+INSERT INTO CampusServicio VALUES (31,3,0,1);
+INSERT INTO CampusServicio VALUES (31,1,1,0);
+INSERT INTO CampusServicio VALUES (41,2,0,1);
+INSERT INTO CampusServicio VALUES (41,4,0,0);
+INSERT INTO CampusServicio VALUES (41,5,0,1);
+INSERT INTO CampusServicio VALUES (41,1,1,1);
+INSERT INTO CampusServicio VALUES (51,4,0,0);
+--Tabla Área
+INSERT INTO AreaAcademica VALUES (1000, 'Ingeniería');
+INSERT INTO AreaAcademica VALUES (2000, 'Ciencias Exactas');
+INSERT INTO AreaAcademica VALUES (3000, 'Economía');
+INSERT INTO AreaAcademica VALUES (4000, 'Filosofía y Letras');
+INSERT INTO AreaAcademica VALUES (5000, 'Derecho');
+INSERT INTO AreaAcademica VALUES (6000, 'Medicina');
+--Tabla CampusArea
+INSERT INTO CampusArea VALUES (11,1000,0,8,4);
+INSERT INTO CampusArea VALUES (11,2000,0,2,4);
+INSERT INTO CampusArea VALUES (11,3000,0,4,10);
+INSERT INTO CampusArea VALUES (12,1000,0,0,11);
+INSERT INTO CampusArea VALUES (21,4000,0,5,7);
+INSERT INTO CampusArea VALUES (22,5000,2,12,2);
+INSERT INTO CampusArea VALUES (31,1000,2,5,10);
+INSERT INTO CampusArea VALUES (31,6000,0,0,12);
+INSERT INTO CampusArea VALUES (41,1000,3,13,70);
+INSERT INTO CampusArea VALUES (41,2000,1,12,38);
+INSERT INTO CampusArea VALUES (41,3000,0,3,17);
+INSERT INTO CampusArea VALUES (41,4000,2,8,10);
+INSERT INTO CampusArea VALUES (41,5000,0,0,16);
+INSERT INTO CampusArea VALUES (41,6000,0,0,16);
+INSERT INTO CampusArea VALUES (51,1000,1,23,15);
+INSERT INTO CampusArea VALUES (52,1000,2,12,12);
+
 
