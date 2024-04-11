@@ -1,1 +1,76 @@
+-- Creacion de la base de datos
+CREATE DATABASE SistInstituciones
+USE SistInstituciones
+
+--Creacion de las tablas
+CREATE TABLE Institucion (
+    idIns INT PRIMARY KEY,
+    nombreIns VARCHAR(100),
+    siglas VARCHAR(20)
+);
+
+CREATE TABLE Carrera (
+    idCar INT PRIMARY KEY,
+    nombreCarr VARCHAR(50),
+    Area VARCHAR(30)
+);
+
+CREATE TABLE InstitucionCarrera (
+    idIns INT REFERENCES Institucion(idIns),
+    idCar INT REFERENCES Carrera(idCar),
+    semestres SMALLINT,
+    creditos SMALLINT,
+    PRIMARY KEY (idIns, idCar)
+);
+
+CREATE TABLE Ciudad (
+    idCiu INT PRIMARY KEY,
+    nombreCiu VARCHAR(50),
+    estado VARCHAR(30)
+);
+
+CREATE TABLE Campus (
+    idCam INT PRIMARY KEY,
+    nombreCam VARCHAR(50),
+    domicilio VARCHAR(100),
+    telefono VARCHAR(20),
+    idCiu INT REFERENCES Ciudad(idCiu),
+    totalProfes INT
+);
+
+CREATE TABLE CampusCarrera (
+    idCam INT REFERENCES Campus(idCam),
+    idIns INT,
+    idCar INT,
+    FOREIGN KEY (idIns, idCar) REFERENCES InstitucionCarrera(idIns, idCar),
+    PRIMARY KEY (idCam, idIns, idCar),
+    blank char
+);
+
+CREATE TABLE Servicio (
+    idSer INT PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+
+CREATE TABLE CampusServicio (
+    idCam INT REFERENCES Campus(idCam),
+    idSer INT REFERENCES Servicio(idSer),
+    costoExtra SMALLINT,
+    mismoLugar SMALLINT,
+    PRIMARY KEY (idCam, idSer)
+);
+
+CREATE TABLE AreaAcademica (
+    idArea INT PRIMARY KEY,
+    nombre VARCHAR(30)
+);
+
+CREATE TABLE CampusArea (
+    idCam INT REFERENCES Campus(idCam),
+    idArea INT REFERENCES AreaAcademica(idArea),
+    profsLic INT,
+    profsMa INT,
+    profsDoc INT,
+    PRIMARY KEY (idCam, idArea)
+);
 
