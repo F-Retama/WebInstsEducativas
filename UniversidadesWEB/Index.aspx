@@ -15,7 +15,7 @@
             <asp:HyperLink ID="hlConsultas" runat="server" NavigateUrl="~/Pags/MenuConsultas.aspx">Ir a la página de consultas</asp:HyperLink>
 &nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="hlCampus" runat="server" NavigateUrl="~/Pags/CarCiuCampus.aspx">Mostrar campus dada una carrera y una ciudad</asp:HyperLink>
+            <asp:HyperLink ID="hlCampus" runat="server" NavigateUrl="~/Pags/BuscarPlanteles.aspx">Mostrar campus dada una carrera y una ciudad</asp:HyperLink>
             &nbsp;&nbsp;&nbsp;</div>
     </form>
 </body>

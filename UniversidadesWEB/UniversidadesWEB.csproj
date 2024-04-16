@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Index.aspx" />
+    <Content Include="Pags\BuscarPlanteles.aspx" />
     <Content Include="Pags\MenuConsultas.aspx" />
     <Content Include="UnisModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="InstitucionCarrera.cs">
       <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pags\BuscarPlanteles.aspx.cs">
+      <DependentUpon>BuscarPlanteles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pags\BuscarPlanteles.aspx.designer.cs">
+      <DependentUpon>BuscarPlanteles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pags\MenuConsultas.aspx.cs">
       <DependentUpon>MenuConsultas.aspx</DependentUpon>
