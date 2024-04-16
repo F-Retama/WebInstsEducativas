@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UnisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AreaAcademica">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Campus">
+          <Key>
+            <PropertyRef Name="idCam" />
+          </Key>
+          <Property Name="idCam" Type="int" Nullable="false" />
+          <Property Name="nombreCam" Type="varchar" MaxLength="50" />
+          <Property Name="domicilio" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="20" />
+          <Property Name="idCiu" Type="int" />
+          <Property Name="totalProfes" Type="int" />
+        </EntityType>
+        <EntityType Name="CampusArea">
+          <Key>
+            <PropertyRef Name="idCam" />
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idCam" Type="int" Nullable="false" />
+          <Property Name="idArea" Type="int" Nullable="false" />
+          <Property Name="profsLic" Type="int" />
+          <Property Name="profsMa" Type="int" />
+          <Property Name="profsDoc" Type="int" />
+        </EntityType>
+        <EntityType Name="CampusCarrera">
+          <Key>
+            <PropertyRef Name="idCam" />
+            <PropertyRef Name="idIns" />
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idCam" Type="int" Nullable="false" />
+          <Property Name="idIns" Type="int" Nullable="false" />
+          <Property Name="idCar" Type="int" Nullable="false" />
+          <Property Name="blank" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CampusServicio">
+          <Key>
+            <PropertyRef Name="idCam" />
+            <PropertyRef Name="idSer" />
+          </Key>
+          <Property Name="idCam" Type="int" Nullable="false" />
+          <Property Name="idSer" Type="int" Nullable="false" />
+          <Property Name="costoExtra" Type="smallint" />
+          <Property Name="mismoLugar" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Carrera">
+          <Key>
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idCar" Type="int" Nullable="false" />
+          <Property Name="nombreCarr" Type="varchar" MaxLength="50" />
+          <Property Name="Area" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="idCiu" />
+          </Key>
+          <Property Name="idCiu" Type="int" Nullable="false" />
+          <Property Name="nombreCiu" Type="varchar" MaxLength="50" />
+          <Property Name="estado" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Institucion">
+          <Key>
+            <PropertyRef Name="idIns" />
+          </Key>
+          <Property Name="idIns" Type="int" Nullable="false" />
+          <Property Name="nombreIns" Type="varchar" MaxLength="100" />
+          <Property Name="siglas" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="InstitucionCarrera">
+          <Key>
+            <PropertyRef Name="idIns" />
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idIns" Type="int" Nullable="false" />
+          <Property Name="idCar" Type="int" Nullable="false" />
+          <Property Name="semestres" Type="smallint" />
+          <Property Name="creditos" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="idSer" />
+          </Key>
+          <Property Name="idSer" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Campus__idCiu__2E1BDC42">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Campus" Type="Self.Campus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiu" />
+            </Principal>
+            <Dependent Role="Campus">
+              <PropertyRef Name="idCiu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusAre__idAre__3D5E1FD2">
+          <End Role="AreaAcademica" Type="Self.AreaAcademica" Multiplicity="1" />
+          <End Role="CampusArea" Type="Self.CampusArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaAcademica">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="CampusArea">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusAre__idCam__3C69FB99">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusArea" Type="Self.CampusArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="idCam" />
+            </Principal>
+            <Dependent Role="CampusArea">
+              <PropertyRef Name="idCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusCar__idCam__30F848ED">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusCarrera" Type="Self.CampusCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="idCam" />
+            </Principal>
+            <Dependent Role="CampusCarrera">
+              <PropertyRef Name="idCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusCarrera__31EC6D26">
+          <End Role="InstitucionCarrera" Type="Self.InstitucionCarrera" Multiplicity="1" />
+          <End Role="CampusCarrera" Type="Self.CampusCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitucionCarrera">
+              <PropertyRef Name="idIns" />
+              <PropertyRef Name="idCar" />
+            </Principal>
+            <Dependent Role="CampusCarrera">
+              <PropertyRef Name="idIns" />
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusSer__idCam__36B12243">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusServicio" Type="Self.CampusServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="idCam" />
+            </Principal>
+            <Dependent Role="CampusServicio">
+              <PropertyRef Name="idCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusSer__idSer__37A5467C">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="CampusServicio" Type="Self.CampusServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="idSer" />
+            </Principal>
+            <Dependent Role="CampusServicio">
+              <PropertyRef Name="idSer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instituci__idCar__29572725">
+          <End Role="Carrera" Type="Self.Carrera" Multiplicity="1" />
+          <End Role="InstitucionCarrera" Type="Self.InstitucionCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrera">
+              <PropertyRef Name="idCar" />
+            </Principal>
+            <Dependent Role="InstitucionCarrera">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instituci__idIns__286302EC">
+          <End Role="Institucion" Type="Self.Institucion" Multiplicity="1" />
+          <End Role="InstitucionCarrera" Type="Self.InstitucionCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institucion">
+              <PropertyRef Name="idIns" />
+            </Principal>
+            <Dependent Role="InstitucionCarrera">
+              <PropertyRef Name="idIns" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnisModelStoreContainer">
+          <EntitySet Name="AreaAcademica" EntityType="Self.AreaAcademica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Campus" EntityType="Self.Campus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusArea" EntityType="Self.CampusArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusCarrera" EntityType="Self.CampusCarrera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusServicio" EntityType="Self.CampusServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carrera" EntityType="Self.Carrera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Institucion" EntityType="Self.Institucion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstitucionCarrera" EntityType="Self.InstitucionCarrera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Campus__idCiu__2E1BDC42" Association="Self.FK__Campus__idCiu__2E1BDC42">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Campus" EntitySet="Campus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusAre__idAre__3D5E1FD2" Association="Self.FK__CampusAre__idAre__3D5E1FD2">
+            <End Role="AreaAcademica" EntitySet="AreaAcademica" />
+            <End Role="CampusArea" EntitySet="CampusArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusAre__idCam__3C69FB99" Association="Self.FK__CampusAre__idCam__3C69FB99">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusArea" EntitySet="CampusArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusCar__idCam__30F848ED" Association="Self.FK__CampusCar__idCam__30F848ED">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusCarrera" EntitySet="CampusCarrera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusCarrera__31EC6D26" Association="Self.FK__CampusCarrera__31EC6D26">
+            <End Role="InstitucionCarrera" EntitySet="InstitucionCarrera" />
+            <End Role="CampusCarrera" EntitySet="CampusCarrera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusSer__idCam__36B12243" Association="Self.FK__CampusSer__idCam__36B12243">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusServicio" EntitySet="CampusServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusSer__idSer__37A5467C" Association="Self.FK__CampusSer__idSer__37A5467C">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="CampusServicio" EntitySet="CampusServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instituci__idCar__29572725" Association="Self.FK__Instituci__idCar__29572725">
+            <End Role="Carrera" EntitySet="Carrera" />
+            <End Role="InstitucionCarrera" EntitySet="InstitucionCarrera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instituci__idIns__286302EC" Association="Self.FK__Instituci__idIns__286302EC">
+            <End Role="Institucion" EntitySet="Institucion" />
+            <End Role="InstitucionCarrera" EntitySet="InstitucionCarrera" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AreaAcademica">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CampusArea" Relationship="Self.FK__CampusAre__idAre__3D5E1FD2" FromRole="AreaAcademica" ToRole="CampusArea" />
+        </EntityType>
+        <EntityType Name="Campus">
+          <Key>
+            <PropertyRef Name="idCam" />
+          </Key>
+          <Property Name="idCam" Type="Int32" Nullable="false" />
+          <Property Name="nombreCam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idCiu" Type="Int32" />
+          <Property Name="totalProfes" Type="Int32" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK__Campus__idCiu__2E1BDC42" FromRole="Campus" ToRole="Ciudad" />
+          <NavigationProperty Name="CampusArea" Relationship="Self.FK__CampusAre__idCam__3C69FB99" FromRole="Campus" ToRole="CampusArea" />
+          <NavigationProperty Name="CampusCarrera" Relationship="Self.FK__CampusCar__idCam__30F848ED" FromRole="Campus" ToRole="CampusCarrera" />
+          <NavigationProperty Name="CampusServicio" Relationship="Self.FK__CampusSer__idCam__36B12243" FromRole="Campus" ToRole="CampusServicio" />
+        </EntityType>
+        <EntityType Name="CampusArea">
+          <Key>
+            <PropertyRef Name="idCam" />
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idCam" Type="Int32" Nullable="false" />
+          <Property Name="idArea" Type="Int32" Nullable="false" />
+          <Property Name="profsLic" Type="Int32" />
+          <Property Name="profsMa" Type="Int32" />
+          <Property Name="profsDoc" Type="Int32" />
+          <NavigationProperty Name="AreaAcademica" Relationship="Self.FK__CampusAre__idAre__3D5E1FD2" FromRole="CampusArea" ToRole="AreaAcademica" />
+          <NavigationProperty Name="Campus" Relationship="Self.FK__CampusAre__idCam__3C69FB99" FromRole="CampusArea" ToRole="Campus" />
+        </EntityType>
+        <EntityType Name="CampusCarrera">
+          <Key>
+            <PropertyRef Name="idCam" />
+            <PropertyRef Name="idIns" />
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idCam" Type="Int32" Nullable="false" />
+          <Property Name="idIns" Type="Int32" Nullable="false" />
+          <Property Name="idCar" Type="Int32" Nullable="false" />
+          <Property Name="blank" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Campus" Relationship="Self.FK__CampusCar__idCam__30F848ED" FromRole="CampusCarrera" ToRole="Campus" />
+          <NavigationProperty Name="InstitucionCarrera" Relationship="Self.FK__CampusCarrera__31EC6D26" FromRole="CampusCarrera" ToRole="InstitucionCarrera" />
+        </EntityType>
+        <EntityType Name="CampusServicio">
+          <Key>
+            <PropertyRef Name="idCam" />
+            <PropertyRef Name="idSer" />
+          </Key>
+          <Property Name="idCam" Type="Int32" Nullable="false" />
+          <Property Name="idSer" Type="Int32" Nullable="false" />
+          <Property Name="costoExtra" Type="Int16" />
+          <Property Name="mismoLugar" Type="Int16" />
+          <NavigationProperty Name="Campus" Relationship="Self.FK__CampusSer__idCam__36B12243" FromRole="CampusServicio" ToRole="Campus" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK__CampusSer__idSer__37A5467C" FromRole="CampusServicio" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Carrera">
+          <Key>
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idCar" Type="Int32" Nullable="false" />
+          <Property Name="nombreCarr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="InstitucionCarrera" Relationship="Self.FK__Instituci__idCar__29572725" FromRole="Carrera" ToRole="InstitucionCarrera" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="idCiu" />
+          </Key>
+          <Property Name="idCiu" Type="Int32" Nullable="false" />
+          <Property Name="nombreCiu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Campus" Relationship="Self.FK__Campus__idCiu__2E1BDC42" FromRole="Ciudad" ToRole="Campus" />
+        </EntityType>
+        <EntityType Name="Institucion">
+          <Key>
+            <PropertyRef Name="idIns" />
+          </Key>
+          <Property Name="idIns" Type="Int32" Nullable="false" />
+          <Property Name="nombreIns" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="siglas" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="InstitucionCarrera" Relationship="Self.FK__Instituci__idIns__286302EC" FromRole="Institucion" ToRole="InstitucionCarrera" />
+        </EntityType>
+        <EntityType Name="InstitucionCarrera">
+          <Key>
+            <PropertyRef Name="idIns" />
+            <PropertyRef Name="idCar" />
+          </Key>
+          <Property Name="idIns" Type="Int32" Nullable="false" />
+          <Property Name="idCar" Type="Int32" Nullable="false" />
+          <Property Name="semestres" Type="Int16" />
+          <Property Name="creditos" Type="Int16" />
+          <NavigationProperty Name="CampusCarrera" Relationship="Self.FK__CampusCarrera__31EC6D26" FromRole="InstitucionCarrera" ToRole="CampusCarrera" />
+          <NavigationProperty Name="Carrera" Relationship="Self.FK__Instituci__idCar__29572725" FromRole="InstitucionCarrera" ToRole="Carrera" />
+          <NavigationProperty Name="Institucion" Relationship="Self.FK__Instituci__idIns__286302EC" FromRole="InstitucionCarrera" ToRole="Institucion" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="idSer" />
+          </Key>
+          <Property Name="idSer" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CampusServicio" Relationship="Self.FK__CampusSer__idSer__37A5467C" FromRole="Servicio" ToRole="CampusServicio" />
+        </EntityType>
+        <Association Name="FK__CampusAre__idAre__3D5E1FD2">
+          <End Role="AreaAcademica" Type="Self.AreaAcademica" Multiplicity="1" />
+          <End Role="CampusArea" Type="Self.CampusArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaAcademica">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="CampusArea">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Campus__idCiu__2E1BDC42">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Campus" Type="Self.Campus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiu" />
+            </Principal>
+            <Dependent Role="Campus">
+              <PropertyRef Name="idCiu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusAre__idCam__3C69FB99">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusArea" Type="Self.CampusArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="idCam" />
+            </Principal>
+            <Dependent Role="CampusArea">
+              <PropertyRef Name="idCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusCar__idCam__30F848ED">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusCarrera" Type="Self.CampusCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="idCam" />
+            </Principal>
+            <Dependent Role="CampusCarrera">
+              <PropertyRef Name="idCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusSer__idCam__36B12243">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusServicio" Type="Self.CampusServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="idCam" />
+            </Principal>
+            <Dependent Role="CampusServicio">
+              <PropertyRef Name="idCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusCarrera__31EC6D26">
+          <End Role="InstitucionCarrera" Type="Self.InstitucionCarrera" Multiplicity="1" />
+          <End Role="CampusCarrera" Type="Self.CampusCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstitucionCarrera">
+              <PropertyRef Name="idIns" />
+              <PropertyRef Name="idCar" />
+            </Principal>
+            <Dependent Role="CampusCarrera">
+              <PropertyRef Name="idIns" />
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusSer__idSer__37A5467C">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="CampusServicio" Type="Self.CampusServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="idSer" />
+            </Principal>
+            <Dependent Role="CampusServicio">
+              <PropertyRef Name="idSer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instituci__idCar__29572725">
+          <End Role="Carrera" Type="Self.Carrera" Multiplicity="1" />
+          <End Role="InstitucionCarrera" Type="Self.InstitucionCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrera">
+              <PropertyRef Name="idCar" />
+            </Principal>
+            <Dependent Role="InstitucionCarrera">
+              <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instituci__idIns__286302EC">
+          <End Role="Institucion" Type="Self.Institucion" Multiplicity="1" />
+          <End Role="InstitucionCarrera" Type="Self.InstitucionCarrera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institucion">
+              <PropertyRef Name="idIns" />
+            </Principal>
+            <Dependent Role="InstitucionCarrera">
+              <PropertyRef Name="idIns" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnisEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AreaAcademica" EntityType="Self.AreaAcademica" />
+          <EntitySet Name="Campus" EntityType="Self.Campus" />
+          <EntitySet Name="CampusArea" EntityType="Self.CampusArea" />
+          <EntitySet Name="CampusCarrera" EntityType="Self.CampusCarrera" />
+          <EntitySet Name="CampusServicio" EntityType="Self.CampusServicio" />
+          <EntitySet Name="Carrera" EntityType="Self.Carrera" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Institucion" EntityType="Self.Institucion" />
+          <EntitySet Name="InstitucionCarrera" EntityType="Self.InstitucionCarrera" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+          <AssociationSet Name="FK__CampusAre__idAre__3D5E1FD2" Association="Self.FK__CampusAre__idAre__3D5E1FD2">
+            <End Role="AreaAcademica" EntitySet="AreaAcademica" />
+            <End Role="CampusArea" EntitySet="CampusArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Campus__idCiu__2E1BDC42" Association="Self.FK__Campus__idCiu__2E1BDC42">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Campus" EntitySet="Campus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusAre__idCam__3C69FB99" Association="Self.FK__CampusAre__idCam__3C69FB99">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusArea" EntitySet="CampusArea" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusCar__idCam__30F848ED" Association="Self.FK__CampusCar__idCam__30F848ED">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusCarrera" EntitySet="CampusCarrera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusSer__idCam__36B12243" Association="Self.FK__CampusSer__idCam__36B12243">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusServicio" EntitySet="CampusServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusCarrera__31EC6D26" Association="Self.FK__CampusCarrera__31EC6D26">
+            <End Role="InstitucionCarrera" EntitySet="InstitucionCarrera" />
+            <End Role="CampusCarrera" EntitySet="CampusCarrera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusSer__idSer__37A5467C" Association="Self.FK__CampusSer__idSer__37A5467C">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="CampusServicio" EntitySet="CampusServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instituci__idCar__29572725" Association="Self.FK__Instituci__idCar__29572725">
+            <End Role="Carrera" EntitySet="Carrera" />
+            <End Role="InstitucionCarrera" EntitySet="InstitucionCarrera" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instituci__idIns__286302EC" Association="Self.FK__Instituci__idIns__286302EC">
+            <End Role="Institucion" EntitySet="Institucion" />
+            <End Role="InstitucionCarrera" EntitySet="InstitucionCarrera" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnisModelStoreContainer" CdmEntityContainer="UnisEntities">
+          <EntitySetMapping Name="AreaAcademica">
+            <EntityTypeMapping TypeName="UnisModel.AreaAcademica">
+              <MappingFragment StoreEntitySet="AreaAcademica">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campus">
+            <EntityTypeMapping TypeName="UnisModel.Campus">
+              <MappingFragment StoreEntitySet="Campus">
+                <ScalarProperty Name="idCam" ColumnName="idCam" />
+                <ScalarProperty Name="nombreCam" ColumnName="nombreCam" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="idCiu" ColumnName="idCiu" />
+                <ScalarProperty Name="totalProfes" ColumnName="totalProfes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusArea">
+            <EntityTypeMapping TypeName="UnisModel.CampusArea">
+              <MappingFragment StoreEntitySet="CampusArea">
+                <ScalarProperty Name="idCam" ColumnName="idCam" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="profsLic" ColumnName="profsLic" />
+                <ScalarProperty Name="profsMa" ColumnName="profsMa" />
+                <ScalarProperty Name="profsDoc" ColumnName="profsDoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusCarrera">
+            <EntityTypeMapping TypeName="UnisModel.CampusCarrera">
+              <MappingFragment StoreEntitySet="CampusCarrera">
+                <ScalarProperty Name="idCam" ColumnName="idCam" />
+                <ScalarProperty Name="idIns" ColumnName="idIns" />
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+                <ScalarProperty Name="blank" ColumnName="blank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusServicio">
+            <EntityTypeMapping TypeName="UnisModel.CampusServicio">
+              <MappingFragment StoreEntitySet="CampusServicio">
+                <ScalarProperty Name="idCam" ColumnName="idCam" />
+                <ScalarProperty Name="idSer" ColumnName="idSer" />
+                <ScalarProperty Name="costoExtra" ColumnName="costoExtra" />
+                <ScalarProperty Name="mismoLugar" ColumnName="mismoLugar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carrera">
+            <EntityTypeMapping TypeName="UnisModel.Carrera">
+              <MappingFragment StoreEntitySet="Carrera">
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+                <ScalarProperty Name="nombreCarr" ColumnName="nombreCarr" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="UnisModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="idCiu" ColumnName="idCiu" />
+                <ScalarProperty Name="nombreCiu" ColumnName="nombreCiu" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Institucion">
+            <EntityTypeMapping TypeName="UnisModel.Institucion">
+              <MappingFragment StoreEntitySet="Institucion">
+                <ScalarProperty Name="idIns" ColumnName="idIns" />
+                <ScalarProperty Name="nombreIns" ColumnName="nombreIns" />
+                <ScalarProperty Name="siglas" ColumnName="siglas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstitucionCarrera">
+            <EntityTypeMapping TypeName="UnisModel.InstitucionCarrera">
+              <MappingFragment StoreEntitySet="InstitucionCarrera">
+                <ScalarProperty Name="idIns" ColumnName="idIns" />
+                <ScalarProperty Name="idCar" ColumnName="idCar" />
+                <ScalarProperty Name="semestres" ColumnName="semestres" />
+                <ScalarProperty Name="creditos" ColumnName="creditos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="UnisModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="idSer" ColumnName="idSer" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
