@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="70deeb3ac0914443b9a98999c7574857" Name="Diagram1">
+        <EntityTypeShape EntityType="UnisModel.AreaAcademica" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.Campus" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.CampusArea" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.CampusCarrera" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.CampusServicio" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.Carrera" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.Ciudad" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.Institucion" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.InstitucionCarrera" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UnisModel.Servicio" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="UnisModel.FK__CampusAre__idAre__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__Campus__idCiu__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__CampusAre__idCam__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__CampusCar__idCam__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__CampusSer__idCam__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__CampusCarrera__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__CampusSer__idSer__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__Instituci__idCar__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="UnisModel.FK__Instituci__idIns__286302EC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

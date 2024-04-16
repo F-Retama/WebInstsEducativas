@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -69,15 +77,52 @@
   <ItemGroup>
     <Content Include="Index.aspx" />
     <Content Include="Pags\MenuConsultas.aspx" />
+    <Content Include="UnisModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnisModel.Context.cs</LastGenOutput>
+      <DependentUpon>UnisModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="UnisModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UnisModel.edmx</DependentUpon>
+      <LastGenOutput>UnisModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaAcademica.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Campus.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampusArea.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampusCarrera.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampusServicio.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Carrera.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ciudad.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Institucion.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstitucionCarrera.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pags\MenuConsultas.aspx.cs">
       <DependentUpon>MenuConsultas.aspx</DependentUpon>
@@ -87,15 +132,43 @@
       <DependentUpon>MenuConsultas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicio.cs">
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnisModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnisModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnisModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnisModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnisModel.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EntityDeploy Include="UnisModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UnisModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="UnisModel.edmx.diagram">
+      <DependentUpon>UnisModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
