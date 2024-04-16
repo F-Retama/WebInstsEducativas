@@ -10,14 +10,14 @@
 namespace UniversidadesWEB
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel ;
     
     public partial class InstitucionCarrera
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public InstitucionCarrera()
         {
-            this.CampusCarrera = new HashSet<CampusCarrera>();
+            this.CampusCarrera = new ObservableCollection<CampusCarrera>();
         }
     
         public int idIns { get; set; }
@@ -26,7 +26,7 @@ namespace UniversidadesWEB
         public Nullable<short> creditos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CampusCarrera> CampusCarrera { get; set; }
+        public virtual ObservableCollection<CampusCarrera> CampusCarrera { get; set; }
         public virtual Carrera Carrera { get; set; }
         public virtual Institucion Institucion { get; set; }
     }

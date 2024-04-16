@@ -10,20 +10,20 @@
 namespace UniversidadesWEB
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel ;
     
     public partial class Servicio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Servicio()
         {
-            this.CampusServicio = new HashSet<CampusServicio>();
+            this.CampusServicio = new ObservableCollection<CampusServicio>();
         }
     
         public int idSer { get; set; }
         public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CampusServicio> CampusServicio { get; set; }
+        public virtual ObservableCollection<CampusServicio> CampusServicio { get; set; }
     }
 }

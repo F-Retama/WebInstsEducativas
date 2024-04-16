@@ -10,20 +10,20 @@
 namespace UniversidadesWEB
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel ;
     
     public partial class AreaAcademica
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AreaAcademica()
         {
-            this.CampusArea = new HashSet<CampusArea>();
+            this.CampusArea = new ObservableCollection<CampusArea>();
         }
     
         public int idArea { get; set; }
         public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CampusArea> CampusArea { get; set; }
+        public virtual ObservableCollection<CampusArea> CampusArea { get; set; }
     }
 }

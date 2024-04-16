@@ -10,14 +10,14 @@
 namespace UniversidadesWEB
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel ;
     
     public partial class Carrera
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Carrera()
         {
-            this.InstitucionCarrera = new HashSet<InstitucionCarrera>();
+            this.InstitucionCarrera = new ObservableCollection<InstitucionCarrera>();
         }
     
         public int idCar { get; set; }
@@ -25,6 +25,6 @@ namespace UniversidadesWEB
         public string Area { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InstitucionCarrera> InstitucionCarrera { get; set; }
+        public virtual ObservableCollection<InstitucionCarrera> InstitucionCarrera { get; set; }
     }
 }

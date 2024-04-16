@@ -10,14 +10,14 @@
 namespace UniversidadesWEB
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel ;
     
     public partial class Ciudad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ciudad()
         {
-            this.Campus = new HashSet<Campus>();
+            this.Campus = new ObservableCollection<Campus>();
         }
     
         public int idCiu { get; set; }
@@ -25,6 +25,6 @@ namespace UniversidadesWEB
         public string estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Campus> Campus { get; set; }
+        public virtual ObservableCollection<Campus> Campus { get; set; }
     }
 }

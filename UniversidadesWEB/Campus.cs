@@ -10,16 +10,16 @@
 namespace UniversidadesWEB
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel ;
     
     public partial class Campus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Campus()
         {
-            this.CampusArea = new HashSet<CampusArea>();
-            this.CampusCarrera = new HashSet<CampusCarrera>();
-            this.CampusServicio = new HashSet<CampusServicio>();
+            this.CampusArea = new ObservableCollection<CampusArea>();
+            this.CampusCarrera = new ObservableCollection<CampusCarrera>();
+            this.CampusServicio = new ObservableCollection<CampusServicio>();
         }
     
         public int idCam { get; set; }
@@ -31,10 +31,10 @@ namespace UniversidadesWEB
     
         public virtual Ciudad Ciudad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CampusArea> CampusArea { get; set; }
+        public virtual ObservableCollection<CampusArea> CampusArea { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CampusCarrera> CampusCarrera { get; set; }
+        public virtual ObservableCollection<CampusCarrera> CampusCarrera { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CampusServicio> CampusServicio { get; set; }
+        public virtual ObservableCollection<CampusServicio> CampusServicio { get; set; }
     }
 }
