@@ -13,5 +13,15 @@ namespace UniversidadesWEB.Pags
 		{
 
 		}
+
+		protected void btAgregarServicio_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void btRegistrarArea_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
