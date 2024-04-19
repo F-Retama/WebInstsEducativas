@@ -8,17 +8,17 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="height: 1812px; width: 1783px; margin-left: 40px">
+        <div style="height: 1887px; width: 1783px; margin-left: 40px">
             Llena cada campo para dar de alta un campus<br />
             <br />
             Institución:
             <asp:DropDownList ID="ddlInstitucion" runat="server" AutoPostBack="True">
             </asp:DropDownList>
             <br />
-            Nombre: <asp:TextBox ID="tbNombre" runat="server"></asp:TextBox>
+            Nombre:
+            <asp:TextBox ID="tbNombre" runat="server" Width="235px"></asp:TextBox>
             <br />
-            Domicilio:
-            <asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
+            Domicilio: <asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
             <br />
             Teléfono:
             <asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
@@ -44,7 +44,7 @@
             <asp:CheckBox ID="cbDentroCampus" runat="server" Text="Está dentro del campus" />
             <br />
 &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btAgregarServicio" runat="server" Text="Agregar Servicio" Width="219px" />
+            <asp:Button ID="btAgregarServicio" runat="server" OnClick="btAgregarServicio_Click" Text="Agregar Servicio" Width="219px" />
             <br />
             <br />
             Servicios registrados <asp:GridView ID="GridView1" runat="server">
@@ -70,7 +70,7 @@
             <asp:TextBox ID="TextBox3" runat="server" Width="135px"></asp:TextBox>
             <br />
 &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button1" runat="server" Text="Registrar Área" Width="216px" />
+            <asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Área" Width="216px" />
             <br />
             <br />
             Áreas registradas<asp:GridView ID="GridView2" runat="server">
@@ -79,6 +79,12 @@
                     <asp:ButtonField Text="Eliminar" />
                 </Columns>
             </asp:GridView>
+            <br />
+            <br />
+            <asp:Button ID="btAlta" runat="server" Text="Dar Plantel de Alta" Width="279px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="../Index.aspx">Volver al inicio</asp:HyperLink>
+            <br />
         </div>
     </form>
 </body>
