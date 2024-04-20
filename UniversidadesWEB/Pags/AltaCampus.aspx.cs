@@ -10,16 +10,36 @@ namespace UniversidadesWEB.Pags
 {
 	public partial class AltaCampus : System.Web.UI.Page
 	{
+		//Variables de clase
 		UnisEntities context = new UnisEntities();
 		string cadSql;
+		List<Campus> campus;
+		int idCampus;
+		Random random = new Random();
 		List<Ciudad> lsCiudad;
 		List<Institucion> lsInstitucion;
 		List<AreaAcademica> lsAreaAcademica;
 		List<Servicio> lsServicio;
+		CampusCarrera campusCarrera;
+		CampusServicio campusServicio;
+		CampusArea campusArea;
+		List<CampusCarrera> lsCampusCarrera;
+		List<CampusServicio> lsCampusServicio;
+		List<CampusArea> lsCampusArea;
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!IsPostBack)
 			{
+				//se inicializan listas que se usarán para el alta
+				lsCampusCarrera = new List<CampusCarrera>();
+				lsCampusServicio = new List<CampusServicio>();
+				lsCampusArea = new List<CampusArea>();
+
+				//Se obtiene el id del campus que se registrará
+				cadSql = $"select * from Campus where idCam = (select max(idCam) from Campus)";
+				campus = context.Campus.SqlQuery(cadSql).ToList();
+				idCampus = campus[0].idCam + random.Next(10);
+				
 				//Llenado de los dropdownlists
 				cadSql = $"select * from Institucion";
 				lsInstitucion = context.Institucion.SqlQuery(cadSql).ToList();
@@ -33,28 +53,16 @@ namespace UniversidadesWEB.Pags
 				foreach (Ciudad c in lsCiudad)
 					ddlCiudad.Items.Add(new ListItem(c.nombreCiu.ToString(), c.idCiu.ToString()));
 
+				//Llenado de gridviews
 				cadSql = $"select * from Servicio";
 				lsServicio = context.Servicio.SqlQuery(cadSql).ToList();
-				ddlServicios.Items.Add(new ListItem("Sin selección", "-1"));
-				foreach (Servicio s in lsServicio)
-					ddlServicios.Items.Add(new ListItem(s.nombre.ToString(), s.idSer.ToString()));
-
+				gvServicios.DataSource = lsServicio;
+				gvServicios.DataBind(); 
 				cadSql = $"select * from AreaAcademica";
 				lsAreaAcademica = context.AreaAcademica.SqlQuery(cadSql).ToList();
-				ddlCiudad.Items.Add(new ListItem("Sin selección", "-1"));
-				foreach (AreaAcademica a in lsAreaAcademica)
-					ddlCiudad.Items.Add(new ListItem(a.nombre.ToString(), a.idArea.ToString()));
+				gvAreas.DataSource = lsAreaAcademica;
+				gvAreas.DataBind();
 			}
-		}
-
-		protected void btAgregarServicio_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		protected void btRegistrarArea_Click(object sender, EventArgs e)
-		{
-
 		}
 
         protected void btAlta_Click(object sender, EventArgs e)

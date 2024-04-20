@@ -79,6 +79,7 @@ Ciudad: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlCiudad" runat="server" AutoPostBack="True">
 </asp:DropDownList>
 <br />
+    <br />
 <br />
 Carreras que se imparten:
 <br />
@@ -86,51 +87,51 @@ Carreras que se imparten:
 <asp:CheckBoxList ID="cblCarreras" runat="server" CssClass="auto-style1" style="z-index: 1">
 </asp:CheckBoxList>
 <br />
+    <br />
 Agregar servicios adicionales&nbsp;
 <br />
-<br />
-<asp:DropDownList ID="ddlServicios" runat="server" AutoPostBack="True">
-</asp:DropDownList>
-<br />
-<br />
-<asp:CheckBox ID="cbCostoExtra" runat="server" Text="Tiene costo extra" />
-<br />
-&nbsp;&nbsp;&nbsp;
-<asp:CheckBox ID="cbDentroCampus" runat="server" Text="Está dentro del campus" />
-<br />
-<asp:Button ID="btAgregarServicio" runat="server" OnClick="btAgregarServicio_Click" Text="Agregar Servicio" CssClass="button" />
-<br />
-<br />
-Servicios registrados <asp:GridView ID="gvServicios" runat="server">
+    <asp:GridView ID="gvServicios" runat="server">
 <Columns>
-<asp:ButtonField Text="Eliminar" />
+    <asp:TemplateField HeaderText="Añadir">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="En campus">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox2" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox2" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Costo extra">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox3" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox3" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
 </Columns>
 </asp:GridView>
 <br />
 <br />
     Áreas académicas&nbsp;&nbsp;&nbsp;
 <br />
-<asp:DropDownList ID="ddlAreas" runat="server" AutoPostBack="True">
-</asp:DropDownList>
-<br />
-&nbsp;&nbsp;&nbsp; No. de profesores con:<br />
-&nbsp;&nbsp;&nbsp; Licenciatura
-<asp:TextBox ID="TextBox1" runat="server" Width="136px"></asp:TextBox>
-<br />
-Maestría&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<asp:TextBox ID="TextBox2" runat="server" Width="138px"></asp:TextBox>
-<br />
-&nbsp;&nbsp;&nbsp; Doctorado&nbsp;&nbsp;&nbsp;
-<asp:TextBox ID="TextBox3" runat="server" Width="135px"></asp:TextBox>
-<br />
-<asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Área" CssClass="button" />
-<br />
-<br />
-<br />
-    Áreas registradas<asp:GridView ID="GridView2" runat="server">
+    <asp:GridView ID="gvAreas" runat="server">
 <Columns>
-<asp:BoundField />
-<asp:ButtonField Text="Eliminar" />
+    <asp:TemplateField HeaderText="Añadir">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
 </Columns>
 </asp:GridView>
 <br />
