@@ -7,6 +7,8 @@
     <style>
     /* Clase para declarar atributos de la página  y darle un estilo común con las demas páginas
     <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
+
+        /* Características para el contenedor esté centrado en la página */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
@@ -17,6 +19,7 @@
             align-items: center;
             height: 100vh;
         }
+        /* Características para que el centro de la página sea azul y todo este centrado */
         .container {
             text-align: center;
             background-color: #e3f2fd;
