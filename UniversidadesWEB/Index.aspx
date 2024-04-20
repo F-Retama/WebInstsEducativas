@@ -41,6 +41,7 @@
         }
     </style>
 </head>
+/* La página index sirve como un directorio, te trae a las demás */
 <body>
     <form id="form1" runat="server">
         <div class="container">
