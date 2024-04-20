@@ -20,29 +20,30 @@ namespace UniversidadesWEB.Pags
 		{
 			if (!IsPostBack)
 			{
+				//Llenado de los dropdownlists
 				cadSql = $"select * from Institucion";
 				lsInstitucion = context.Institucion.SqlQuery(cadSql).ToList();
-				ddlInstitucion.Items.Add("");
+				ddlInstitucion.Items.Add(new ListItem("Sin selección", "-1"));
 				foreach (Institucion i in lsInstitucion)
-					ddlInstitucion.Items.Add(i.nombreIns.ToString());
+					ddlInstitucion.Items.Add(new ListItem(i.nombreIns.ToString(), i.idIns.ToString()));
 
 				cadSql = $"select * from Ciudad";
 				lsCiudad = context.Ciudad.SqlQuery(cadSql).ToList();
-				ddlCiudad.Items.Add("");
+				ddlCiudad.Items.Add(new ListItem("Sin selección", "-1"));
 				foreach (Ciudad c in lsCiudad)
-					ddlCiudad.Items.Add(c.nombreCiu.ToString());
+					ddlCiudad.Items.Add(new ListItem(c.nombreCiu.ToString(), c.idCiu.ToString()));
 
 				cadSql = $"select * from Servicio";
 				lsServicio = context.Servicio.SqlQuery(cadSql).ToList();
-				ddlServicios.Items.Add("");
+				ddlServicios.Items.Add(new ListItem("Sin selección", "-1"));
 				foreach (Servicio s in lsServicio)
-					ddlServicios.Items.Add(s.nombre.ToString());
+					ddlServicios.Items.Add(new ListItem(s.nombre.ToString(), s.idSer.ToString()));
 
 				cadSql = $"select * from AreaAcademica";
 				lsAreaAcademica = context.AreaAcademica.SqlQuery(cadSql).ToList();
-				ddlCiudad.Items.Add("");
+				ddlCiudad.Items.Add(new ListItem("Sin selección", "-1"));
 				foreach (AreaAcademica a in lsAreaAcademica)
-					ddlCiudad.Items.Add(a.nombre.ToString());
+					ddlCiudad.Items.Add(new ListItem(a.nombre.ToString(), a.idArea.ToString()));
 			}
 		}
 
