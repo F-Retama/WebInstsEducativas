@@ -5,6 +5,10 @@
 <head runat="server">
     <title>Seleccionar Consultas</title>
     <style>
+
+        /* Clase para declarar atributos de la página Buscar Planteles y darle un estilo común con las demas páginas 
+        <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los atributos estilizados */
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
