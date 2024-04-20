@@ -23,6 +23,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        /* Cuando los links tienen CssClass="link" tienen las siguientes características */
         .link {
             color: #1565c0;
             text-decoration: none;
