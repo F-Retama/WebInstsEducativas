@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/* La página Buscar Planteles sirve para que dado un carrera y ciudad, se muestran las instituciones y campus que 
+    ofrecen dicha carrera en la ciudad (punto 4), y tiene un hyperlink para regresar a index. */
 namespace UniversidadesWEB.Pags
 {
     public partial class BuscarPlanteles : System.Web.UI.Page
