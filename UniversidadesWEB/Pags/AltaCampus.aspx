@@ -64,7 +64,7 @@ box-sizing: border-box;
 <div class="container">
 <p> Llena cada campo para dar de alta un campus<br /></p>
 <br />
-Institucion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Institución:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlInstitucion" runat="server" AutoPostBack="True">
 </asp:DropDownList>
 &nbsp;
@@ -73,7 +73,7 @@ Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbNombre" runat="ser
 <br />
 Domicilio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
 <br />
-Telefono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
+Teléfono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
 <br />
 Ciudad: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlCiudad" runat="server" AutoPostBack="True">
@@ -96,7 +96,7 @@ Agregar servicios adicionales&nbsp;
 <asp:CheckBox ID="cbCostoExtra" runat="server" Text="Tiene costo extra" />
 <br />
 &nbsp;&nbsp;&nbsp;
-<asp:CheckBox ID="cbDentroCampus" runat="server" Text="Esta dentro del campus" />
+<asp:CheckBox ID="cbDentroCampus" runat="server" Text="Está dentro del campus" />
 <br />
 <asp:Button ID="btAgregarServicio" runat="server" OnClick="btAgregarServicio_Click" Text="Agregar Servicio" CssClass="button" />
 <br />
@@ -108,7 +108,7 @@ Servicios registrados <asp:GridView ID="gvServicios" runat="server">
 </asp:GridView>
 <br />
 <br />
-    Areas academicas&nbsp;&nbsp;&nbsp;
+    Áreas académicas&nbsp;&nbsp;&nbsp;
 <br />
 <asp:DropDownList ID="ddlAreas" runat="server" AutoPostBack="True">
 </asp:DropDownList>
@@ -117,17 +117,17 @@ Servicios registrados <asp:GridView ID="gvServicios" runat="server">
 &nbsp;&nbsp;&nbsp; Licenciatura
 <asp:TextBox ID="TextBox1" runat="server" Width="136px"></asp:TextBox>
 <br />
-Maestria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Maestría&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:TextBox ID="TextBox2" runat="server" Width="138px"></asp:TextBox>
 <br />
 &nbsp;&nbsp;&nbsp; Doctorado&nbsp;&nbsp;&nbsp;
 <asp:TextBox ID="TextBox3" runat="server" Width="135px"></asp:TextBox>
 <br />
-<asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Area" CssClass="button" />
+<asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Área" CssClass="button" />
 <br />
 <br />
 <br />
-    Areas registradas<asp:GridView ID="GridView2" runat="server">
+    Áreas registradas<asp:GridView ID="GridView2" runat="server">
 <Columns>
 <asp:BoundField />
 <asp:ButtonField Text="Eliminar" />
