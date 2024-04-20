@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+/* La página index sirve como un directorio (punto 1), y tiene hyperlinks de los puntos (2) (4) y (5) */
     <title>Index</title>
     <style>
     /* Estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
@@ -41,7 +42,6 @@
         }
     </style>
 </head>
-/* La página index sirve como un directorio, te trae a las demás */
 <body>
     <form id="form1" runat="server">
         <div class="container">
