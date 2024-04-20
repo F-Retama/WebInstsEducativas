@@ -9,7 +9,7 @@
         /* Clase para declarar atributos de la página Buscar Planteles y darle un estilo común con las demas páginas 
         <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los atributos estilizados */
 
-        /* Características para el contenedor esté centrado en la página */
+        /* Características para el contenedor esté centrado en la página y tenga una letra uniforme */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
