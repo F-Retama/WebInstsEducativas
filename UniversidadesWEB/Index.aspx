@@ -5,6 +5,7 @@
 <head runat="server">
     <title>Index</title>
     <style>
+    /* Estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
