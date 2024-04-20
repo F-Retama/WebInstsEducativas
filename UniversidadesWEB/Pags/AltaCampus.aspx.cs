@@ -55,5 +55,10 @@ namespace UniversidadesWEB.Pags
 		{
 
 		}
-	}
+
+        protected void btAlta_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

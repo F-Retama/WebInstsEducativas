@@ -1,3 +1,5 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AltaCampus.aspx.cs" Inherits="UniversidadesWEB.Pags.AltaCampus" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -62,7 +64,7 @@ box-sizing: border-box;
 <div class="container">
 <p> Llena cada campo para dar de alta un campus<br /></p>
 <br />
-Institución:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Institucion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlInstitucion" runat="server" AutoPostBack="True">
 </asp:DropDownList>
 &nbsp;
@@ -71,7 +73,7 @@ Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbNombre" runat="ser
 <br />
 Domicilio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
 <br />
-Teléfono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
+Telefono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
 <br />
 Ciudad: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlCiudad" runat="server" AutoPostBack="True">
@@ -94,7 +96,7 @@ Agregar servicios adicionales&nbsp;
 <asp:CheckBox ID="cbCostoExtra" runat="server" Text="Tiene costo extra" />
 <br />
 &nbsp;&nbsp;&nbsp;
-<asp:CheckBox ID="cbDentroCampus" runat="server" Text="Está dentro del campus" />
+<asp:CheckBox ID="cbDentroCampus" runat="server" Text="Esta dentro del campus" />
 <br />
 <asp:Button ID="btAgregarServicio" runat="server" OnClick="btAgregarServicio_Click" Text="Agregar Servicio" CssClass="button" />
 <br />
@@ -106,7 +108,7 @@ Servicios registrados <asp:GridView ID="gvServicios" runat="server">
 </asp:GridView>
 <br />
 <br />
-Áreas académicas&nbsp;&nbsp;&nbsp;
+    Areas academicas&nbsp;&nbsp;&nbsp;
 <br />
 <asp:DropDownList ID="ddlAreas" runat="server" AutoPostBack="True">
 </asp:DropDownList>
@@ -115,17 +117,17 @@ Servicios registrados <asp:GridView ID="gvServicios" runat="server">
 &nbsp;&nbsp;&nbsp; Licenciatura
 <asp:TextBox ID="TextBox1" runat="server" Width="136px"></asp:TextBox>
 <br />
-Maestría&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Maestria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:TextBox ID="TextBox2" runat="server" Width="138px"></asp:TextBox>
 <br />
 &nbsp;&nbsp;&nbsp; Doctorado&nbsp;&nbsp;&nbsp;
 <asp:TextBox ID="TextBox3" runat="server" Width="135px"></asp:TextBox>
 <br />
-<asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Área" CssClass="button" />
+<asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Area" CssClass="button" />
 <br />
 <br />
 <br />
-Áreas registradas<asp:GridView ID="GridView2" runat="server">
+    Areas registradas<asp:GridView ID="GridView2" runat="server">
 <Columns>
 <asp:BoundField />
 <asp:ButtonField Text="Eliminar" />
@@ -133,7 +135,7 @@ Maestría&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </asp:GridView>
 <br />
 <br />
-<asp:Button ID="btAlta" runat="server" Text="Dar Plantel de Alta" CssClass="button" />
+<asp:Button ID="btAlta" runat="server" Text="Dar Plantel de Alta" CssClass="button" OnClick="btAlta_Click" />
 <br />
 <asp:HyperLink ID="hl1" runat="server" NavigateUrl="../Index.aspx" CssClass="link">Volver al inicio</asp:HyperLink>
 <br />

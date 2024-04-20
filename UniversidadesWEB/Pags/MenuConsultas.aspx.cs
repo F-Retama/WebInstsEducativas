@@ -32,7 +32,7 @@ namespace UniversidadesWEB.Pags
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
         public void mostrar <T> (List<T> lista, string mensaje)
         {
