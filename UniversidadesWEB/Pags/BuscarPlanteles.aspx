@@ -1,10 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarPlanteles.aspx.cs" Inherits="UniversidadesWEB.Pags.BuscarPlanteles" %>
+    ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarPlanteles.aspx.cs" Inherits="UniversidadesWEB.Pags.BuscarPlanteles" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Buscar Planteles</title>
     <style>
+    /* La página Buscar Planteles sirve para que dado un carrera y ciudad, se muestran las instituciones y campus que 
+    ofrecen dicha carrera en la ciudad (punto 4), y tiene un hyperlink para regresar a index.
+
+    <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
@@ -22,13 +26,16 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        /* Cuando un label tiene class="label", se dan las siguientes características: */
         .label {
             color: #1565c0;
             font-weight: bold;
         }
+        /* Características para el class="dropdown: */
         .dropdown {
             margin: 10px;
         }
+        /* Cuando un botón tiene CssClass="button", se dan las siguientes características: */
         .button {
             background-color: #1565c0;
             color: #fff;
@@ -41,16 +48,19 @@
         .button:hover {
             background-color: #0d47a1;
         }
+        /* Cuando un GridView tiene CssClass="gridview", se dan las siguientes características: */
         .gridview {
             margin-top: 20px;
             width: 80%;
             margin-left: auto;
             margin-right: auto;
         }
+        /* Características para el CssClass="message": */
         .message {
             color: #388e3c;
             font-style: italic;
         }
+        /* Cuando un link tiene CssClass="link", se dan las siguientes características: */
         .link {
             color: #1565c0;
             text-decoration: none;
@@ -71,7 +81,6 @@
                 <br /><br />
                  <asp:Button ID="btBuscar" runat="server" OnClick="btBuscar_Click" Text="Buscar" CssClass="button" />
             </div>
-           
             <asp:GridView ID="gvResp" runat="server" CssClass="gridview"></asp:GridView>
              <br /><br />
             <asp:Label ID="lbMensaje" runat="server" CssClass="message"></asp:Label>
