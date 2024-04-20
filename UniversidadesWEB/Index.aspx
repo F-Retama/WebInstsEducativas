@@ -5,7 +5,7 @@
 <head runat="server">
     <title>Index</title>
     <style>
-    /* La página index sirve como un directorio (punto 1), y tiene hyperlinks de los puntos (2) (4) y (5) 
+    /* Clase para declarar atributos de la página  y darle un estilo común con las demas páginas
     <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
         body {
             font-family: Arial, sans-serif;
