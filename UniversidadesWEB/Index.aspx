@@ -6,7 +6,7 @@
     <title>Index</title>
     <style>
     /* La página index sirve como un directorio (punto 1), y tiene hyperlinks de los puntos (2) (4) y (5) 
-    Estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
+    <style es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
