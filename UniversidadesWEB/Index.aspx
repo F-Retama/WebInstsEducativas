@@ -41,6 +41,7 @@
     </style>
 </head>
 <body>
+    /* Form con los hyperlinks para dirigirnos a las demás páginas */
     <form id="form1" runat="server">
         <div class="container">
             <p>Este es el menú desde el cual se puede dirigir a cualquier página</p>
