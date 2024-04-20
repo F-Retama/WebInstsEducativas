@@ -1,12 +1,14 @@
-    ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarPlanteles.aspx.cs" Inherits="UniversidadesWEB.Pags.BuscarPlanteles" %>
+ /* Clase para declarar atributos de la página  y darle un estilo común con las demas páginas */
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BuscarPlanteles.aspx.cs" Inherits="UniversidadesWEB.Pags.BuscarPlanteles" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Buscar Planteles</title>
     <style>
-    /* La página Buscar Planteles sirve para que dado un carrera y ciudad, se muestran las instituciones y campus que 
-    ofrecen dicha carrera en la ciudad (punto 4), y tiene un hyperlink para regresar a index.
+   
+    /* <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
 
     <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
         body {
