@@ -1,11 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="UniversidadesWEB.Index" %>
-/* La página index sirve como un directorio (punto 1), y tiene hyperlinks de los puntos (2) (4) y (5) */
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Index</title>
     <style>
-    /* Estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
+    /* La página index sirve como un directorio (punto 1), y tiene hyperlinks de los puntos (2) (4) y (5) 
+    Estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
