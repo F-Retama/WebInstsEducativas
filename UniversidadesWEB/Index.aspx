@@ -43,7 +43,6 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            // Form con los hyperlinks para dirigirnos a las demás páginas 
             <p>Este es el menú desde el cual se puede dirigir a cualquier página</p>
             <br />
             <asp:HyperLink ID="hlConsultas" runat="server" NavigateUrl="~/Pags/MenuConsultas.aspx" CssClass="link">Ir a la página de consultas</asp:HyperLink>
