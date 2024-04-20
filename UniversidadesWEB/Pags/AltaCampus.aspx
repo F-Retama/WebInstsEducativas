@@ -5,25 +5,25 @@
 <style>
 body {
 font-family: Arial, sans-serif;
-background-color: #f0f5f9; /* Light blue background */
+background-color: #f0f5f9; 
 margin: 0;
 padding: 0;
 display: flex;
 justify-content: center;
 align-items: center;
-min-height: 100vh; /* Ensure the body covers the full viewport height */
+min-height: 100vh; 
 }
 .container {
 text-align: center;
-background-color: #cfd8dc; /* Pastel blue background */
+background-color: #cfd8dc; 
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-max-width: 600px; /* Limit container width */
-width: 90%; /* Adjusted width */
+max-width: 600px; 
+width: 90%; 
 }
 .button {
-background-color: #1565c0; /* Blue button */
+background-color: #1565c0;
 color: #fff;
 border: none;
 padding: 10px 20px;
