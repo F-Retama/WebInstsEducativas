@@ -6,10 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Entity;
 
+/* La página Alta Campus sirve para dar de alta toda la información asociada con un nuevo campus (punto 5).  
+    Esto involucra muchas tablas, por lo cual tiene muchos atributos. */
 namespace UniversidadesWEB.Pags
 {
 	public partial class AltaCampus : System.Web.UI.Page
 	{
+ 		/* Declaración de variables */
 		UnisEntities context = new UnisEntities();
 		string cadSql;
 		List<Ciudad> lsCiudad;
@@ -20,6 +23,7 @@ namespace UniversidadesWEB.Pags
 		{
 			if (!IsPostBack)
 			{
+   				/* Cuando se carga la página se llenan los DDLs necesarios */
 				cadSql = $"select * from Institucion";
 				lsInstitucion = context.Institucion.SqlQuery(cadSql).ToList();
 				ddlInstitucion.Items.Add("");
