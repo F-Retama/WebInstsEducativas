@@ -4,19 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+/* La página Menu Consultas sirve para mostrar los resultados de las cuatro consultas (punto 2), 
+Usa un sólo gridview para los resultados, con botones se selecciona la consulta requerida y 
+con un label indica que resultados se están mostrando. */
 
 namespace UniversidadesWEB.Pags
 {
     public partial class MenuConsultas : System.Web.UI.Page
     {
         //Clases auxiliares
-        //Consulta 1
+        //Clase necesaria para onsulta 1
         public class CiuInstCamp{
             public string Ciudad { get; set; }
             public string Institucion { get; set; }
             public string Campus { get; set; }
         }
-        //Consulta 3
+        //Clase necesaria para  Consulta 3
         public class CampInst
         {
             public string Campus { get; set; }
@@ -34,13 +37,14 @@ namespace UniversidadesWEB.Pags
         {
             
         }
+        // Método auxiliar para optimizar mostrar mensajes y listas específicas a cada consulta 
         public void mostrar <T> (List<T> lista, string mensaje)
         {
             lbMensaje.Text = mensaje;
             gvConsultas.DataSource = lista;
             gvConsultas.DataBind();
         }
-
+        //Método para consulta 1, cuando se pica el botón hace el query y llama al método mostrar
         protected void btConsulta1_Click(object sender, EventArgs e)
         {
             cadSql = "select distinct nombreCiu as Ciudad, nombreIns as Institucion, nombreCam as Campus " +
@@ -51,7 +55,7 @@ namespace UniversidadesWEB.Pags
             mostrar(lsCiuInstCamp, "Para cada ciudad, se listan las instituciones y los campus " +
                                     "que se localizan en la misma");
         }
-
+         //Método para consulta 2, cuando se pica el botón hace el query y llama al método mostrar
         protected void btConsulta2_Click(object sender, EventArgs e)
         {
             cadSql = "select * from Institucion where idins in " +
@@ -71,7 +75,7 @@ namespace UniversidadesWEB.Pags
                                     "donde se imparten las carreras de Ing. en computación, " +
                                     "Ing. en telemática y Lic. en Matemáticas (o sea, todas ellas).");
         }
-
+         //Método para consulta 3, cuando se pica el botón hace el query y llama al método mostrar
         protected void btConsulta3_Click(object sender, EventArgs e)
         {
             cadSql = "select distinct nombreCam as Campus, nombreIns as Institucion " +
@@ -84,7 +88,7 @@ namespace UniversidadesWEB.Pags
             mostrar(lsCampInst, "los campus, y su institución, que tienen más de dos servicios " +
                                 "adicionales en el mismo sitio del campus");
         }
-
+         //Método para consulta 4, cuando se pica el botón hace el query y llama al método mostrar
         protected void btConsulta4_Click(object sender, EventArgs e)
         {
             cadSql = "select * from Institucion where idIns in " +

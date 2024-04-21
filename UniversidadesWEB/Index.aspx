@@ -5,6 +5,10 @@
 <head runat="server">
     <title>Index</title>
     <style>
+    /* Clase para declarar atributos de la página  y darle un estilo común con las demas páginas
+    <style> es el estilo en HTML para que los elementos estén centrados, con letra moderna, y los links estilizados */
+
+        /* Características para el contenedor esté centrado en la página */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
@@ -15,6 +19,7 @@
             align-items: center;
             height: 100vh;
         }
+        /* Características para que el centro de la página sea azul y todo este centrado */
         .container {
             text-align: center;
             background-color: #e3f2fd;
@@ -22,6 +27,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        /* Cuando los links tienen CssClass="link" tienen las siguientes características: */
         .link {
             color: #1565c0;
             text-decoration: none;
