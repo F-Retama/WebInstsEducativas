@@ -15,9 +15,10 @@ namespace UniversidadesWEB.Pags
  		/* Declaración de variables */
 		UnisEntities context = new UnisEntities();
 		string cadSql;
-		List<Campus> campus;
+		List<Campus> lsCampus;
 		int idCampus;
 		Random random = new Random();
+		Campus campus;
 		List<Ciudad> lsCiudad;
 		List<Institucion> lsInstitucion;
 		List<Carrera> lsCarreras;
@@ -34,21 +35,21 @@ namespace UniversidadesWEB.Pags
 			{
 				lbMsg.Text = "";
 
-				//Se obtiene el id del campus que se registrar�
+				//Se obtiene el id del campus que se registrará
 				cadSql = $"select * from Campus where idCam = (select max(idCam) from Campus)";
-				campus = context.Campus.SqlQuery(cadSql).ToList();
-				idCampus = campus[0].idCam + random.Next(10);
+				lsCampus = context.Campus.SqlQuery(cadSql).ToList();
+				idCampus = lsCampus[0].idCam + random.Next(10);
 				
 				//Llenado de los dropdownlists
 				cadSql = $"select * from Institucion";
 				lsInstitucion = context.Institucion.SqlQuery(cadSql).ToList();
-				ddlInstitucion.Items.Add(new ListItem("Sin selecci�n", "-1"));
+				ddlInstitucion.Items.Add(new ListItem("Sin selección", "-1"));
 				foreach (Institucion i in lsInstitucion)
 					ddlInstitucion.Items.Add(new ListItem(i.nombreIns.ToString(), i.idIns.ToString()));
 
 				cadSql = $"select * from Ciudad";
 				lsCiudad = context.Ciudad.SqlQuery(cadSql).ToList();
-				ddlCiudad.Items.Add(new ListItem("Sin selecci�n", "-1"));
+				ddlCiudad.Items.Add(new ListItem("Sin selección", "-1"));
 				foreach (Ciudad c in lsCiudad)
 					ddlCiudad.Items.Add(new ListItem(c.nombreCiu.ToString(), c.idCiu.ToString()));
 
@@ -72,36 +73,37 @@ namespace UniversidadesWEB.Pags
 
 		protected void btAlta_Click(object sender, EventArgs e)
 		{
-			//se verifica que se tenga la informaci�n necesaria
+			//se verifica que se tenga la información necesaria
 			if (ddlInstitucion.SelectedIndex>0 && ddlCiudad.SelectedIndex>0) {
 				//altas en CampusCarrera
 				foreach (ListItem car in cblCarreras.Items)
 				{
-					//creaci�n del objeto de clase Campus
-					campus[0] = new Campus();
-					campus[0].idCam = idCampus;
-					campus[0].idCiu = Convert.ToInt32(ddlCiudad.SelectedValue);
-					campus[0].nombreCam = tbNombre.Text;
-					campus[0].domicilio = tbDomicilio.Text;
-					campus[0].telefono = tbTelefono.Text;
+					//creación y alta del objeto de la entidad Campus
+					campus = new Campus();
+					campus.idCam = idCampus;
+					campus.idCiu = Convert.ToInt32(ddlCiudad.SelectedValue);
+					campus.nombreCam = tbNombre.Text;
+					campus.domicilio = tbDomicilio.Text;
+					campus.telefono = tbTelefono.Text;
+					//context.Campus.Add(campus);
 
-					//se revisa si la carrera est� seleccionada
+					//se revisa si la carrera está seleccionada
 					if (car.Selected)
 					{
-						//para cada carrera, se revisa que la instituci�n ya la imparta
+						//para cada carrera, se revisa que la institución ya la imparta
 						institucionCarrera = context.InstitucionCarrera.Find(Convert.ToInt32(ddlInstitucion.SelectedValue), Convert.ToInt32(car.Value));
 						if (institucionCarrera is null)
 						{
-							lbMsg.Text += $"\n{ddlInstitucion.Text} no imparte {car.Text}, no se a�adi�";
+							lbMsg.Text += $"{ddlInstitucion.Items[ddlInstitucion.SelectedIndex].Text} no imparte {car.Text}, no se añadió.\n";
 						}
-						else //alta en campus carrera
+						else
 						{
+							//se crea una instancia del vínculo m-n
 							campusCarrera = new CampusCarrera();
 							campusCarrera.idCam = idCampus;
 							campusCarrera.idIns = Convert.ToInt32(ddlInstitucion.SelectedValue);
 							campusCarrera.idCar = Convert.ToInt32(car.Value);
 							campusCarrera.blank = null;
-							lbMsg.Text += campusCarrera.ToString();
 							//context.CampusCarrera.Add(campusCarrera);
 						}
 					}
@@ -110,31 +112,43 @@ namespace UniversidadesWEB.Pags
 				foreach (GridViewRow ser in gvServicios.Rows)
 				{
 					//se revisa que el servicio se haya seleccionado
-					cb = (CheckBox)ser.Cells[0].Controls[0];
+					cb = (CheckBox)ser.Cells[0].FindControl("CheckBox1");
 					if (cb.Checked)
 					{
+						//se crea una instancia del vínculo m-n
 						campusServicio = new CampusServicio();
 						campusServicio.idCam = idCampus;
-						campusServicio.idSer = Convert.ToInt32(ser.Cells[3]);
-						cb = (CheckBox)ser.Cells[1].Controls[0];
+						campusServicio.idSer = Convert.ToInt32(ser.Cells[3].Text);
+						cb = (CheckBox)ser.Cells[1].FindControl("CheckBox2");
 						campusServicio.mismoLugar = Convert.ToInt16(cb.Checked);
-						cb = (CheckBox)ser.Cells[2].Controls[0];
+						cb = (CheckBox)ser.Cells[2].FindControl("CheckBox3");
 						campusServicio.costoExtra = Convert.ToInt16(cb.Checked);
-						lbMsg.Text += campusServicio.ToString();
 						//context.CampusServicio.Add(campusServicio);
 					}
 				}
-				//altas de las �reas acad�micas
+				//altas de las Áreas académicas
 				foreach (GridViewRow area in gvAreas.Rows)
 				{
-					//se revisa que el �rea se haya seleccionado
-					cb = (CheckBox)area.Cells[0].Controls[0];
+					//se revisa que el área se haya seleccionado
+					cb = (CheckBox)area.Cells[0].FindControl("CheckBox1");
 					if (cb.Checked)
 					{
-						campusArea = new CampusArea();
-						campusArea.idCam = idCampus;
-						campusArea.idArea = Convert.ToInt32(area.Cells[4]);
-						//campusArea.profsLic = Convert.ToInt32(((TextBox)area.Cells[1].).Text);
+						try
+						{
+							//se crea una instancia del vínculo m-n
+							campusArea = new CampusArea();
+							campusArea.idCam = idCampus;
+							campusArea.idArea = Convert.ToInt32(area.Cells[4].Text);
+							campusArea.profsLic = Convert.ToInt32(((TextBox)area.Cells[1].FindControl("tbLics")).Text);
+							campusArea.profsMa = Convert.ToInt32(((TextBox)area.Cells[1].FindControl("tbMtros")).Text);
+							campusArea.profsDoc = Convert.ToInt32(((TextBox)area.Cells[1].FindControl("tbDocs")).Text);
+							//context.CampusArea.Add(campusArea);
+						}
+						//control para entradas no numéricas en los textboxes
+						catch (Exception)
+                        {
+							lbMsg.Text += $"Datos del área {area.Cells[5].Text} no válidos, no se añadió.\n";
+                        }
 					}
 				}
 			}

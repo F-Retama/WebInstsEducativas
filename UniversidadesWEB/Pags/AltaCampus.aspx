@@ -71,7 +71,7 @@
 <div class="container">
 <p> Llena cada campo para dar de alta un campus<br /></p>
 <br />
-Instituci�n:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Institución:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlInstitucion" runat="server" AutoPostBack="True">
 </asp:DropDownList>
 &nbsp;
@@ -80,7 +80,7 @@ Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbNombre" runat="ser
 <br />
 Domicilio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
 <br />
-Tel�fono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
+Teléfono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
 <br />
 Ciudad: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:DropDownList ID="ddlCiudad" runat="server" AutoPostBack="True">
@@ -99,7 +99,7 @@ Agregar servicios adicionales&nbsp;
 <br />
     <asp:GridView ID="gvServicios" runat="server">
 <Columns>
-    <asp:TemplateField HeaderText="A�adir">
+    <asp:TemplateField HeaderText="Añadir">
         <EditItemTemplate>
             <asp:CheckBox ID="CheckBox1" runat="server" />
         </EditItemTemplate>
@@ -127,11 +127,10 @@ Agregar servicios adicionales&nbsp;
 </asp:GridView>
 <br />
 <br />
-    �reas acad�micas&nbsp;&nbsp;&nbsp;
-<br />
+    Áreas académicas&nbsp;&nbsp;&nbsp; <br />
     <asp:GridView ID="gvAreas" runat="server">
 <Columns>
-    <asp:TemplateField HeaderText="A�adir">
+    <asp:TemplateField HeaderText="Añadir">
         <EditItemTemplate>
             <asp:CheckBox ID="CheckBox1" runat="server" />
         </EditItemTemplate>
