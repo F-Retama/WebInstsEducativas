@@ -67,86 +67,103 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
-            <p> Llena cada campo para dar de alta un campus<br /></p>
-            <br />
-            Institución:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlInstitucion" runat="server" AutoPostBack="True">
-            </asp:DropDownList>
-            &nbsp;
-            <br />
-            Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbNombre" runat="server" Width="235px"></asp:TextBox>
-            <br />
-            Domicilio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
-            <br />
-            Teléfono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
-            <br />
-            Ciudad: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlCiudad" runat="server" AutoPostBack="True">
-            </asp:DropDownList>
-            <br />
-            <br />
-            Carreras que se imparten:
-            <br />
-            <br />
-            <asp:CheckBoxList ID="cblCarreras" runat="server" CssClass="auto-style1" style="z-index: 1">
-            </asp:CheckBoxList>
-            <br />
-            Agregar servicios adicionales&nbsp;
-            <br />
-            <br />
-            <asp:DropDownList ID="ddlServicios" runat="server" AutoPostBack="True">
-            </asp:DropDownList>
-            <br />
-            <br />
-            <asp:CheckBox ID="cbCostoExtra" runat="server" Text="Tiene costo extra" />
-            <br />
-            &nbsp;&nbsp;&nbsp;
-            <asp:CheckBox ID="cbDentroCampus" runat="server" Text="Está dentro del campus" />
-            <br />
-            <asp:Button ID="btAgregarServicio" runat="server" OnClick="btAgregarServicio_Click" Text="Agregar Servicio" CssClass="button" />
-            <br />
-            <br />
-            Servicios registrados <asp:GridView ID="gvServicios" runat="server">
-            <Columns>
-            <asp:ButtonField Text="Eliminar" />
-            </Columns>
-            </asp:GridView>
-            <br />
-            <br />
-                Áreas académicas&nbsp;&nbsp;&nbsp;
-            <br />
-            <asp:DropDownList ID="ddlAreas" runat="server" AutoPostBack="True">
-            </asp:DropDownList>
-            <br />
-            &nbsp;&nbsp;&nbsp; No. de profesores con:<br />
-            &nbsp;&nbsp;&nbsp; Licenciatura
-            <asp:TextBox ID="TextBox1" runat="server" Width="136px"></asp:TextBox>
-            <br />
-            Maestría&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox2" runat="server" Width="138px"></asp:TextBox>
-            <br />
-            &nbsp;&nbsp;&nbsp; Doctorado&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox3" runat="server" Width="135px"></asp:TextBox>
-            <br />
-            <asp:Button ID="btRegistrarArea" runat="server" OnClick="btRegistrarArea_Click" Text="Registrar Área" CssClass="button" />
-            <br />
-            <br />
-            <br />
-                Áreas registradas<asp:GridView ID="GridView2" runat="server">
-            <Columns>
-            <asp:BoundField />
-            <asp:ButtonField Text="Eliminar" />
-            </Columns>
-            </asp:GridView>
-            <br />
-            <br />
-            <asp:Button ID="btAlta" runat="server" Text="Dar Plantel de Alta" CssClass="button" OnClick="btAlta_Click" />
-            <br />
-            <asp:HyperLink ID="hl1" runat="server" NavigateUrl="../Index.aspx" CssClass="link">Volver al inicio</asp:HyperLink>
-            <br />
-        </div>
-    </form>
+<form id="form1" runat="server">
+<div class="container">
+<p> Llena cada campo para dar de alta un campus<br /></p>
+<br />
+Instituci�n:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<asp:DropDownList ID="ddlInstitucion" runat="server" AutoPostBack="True">
+</asp:DropDownList>
+&nbsp;
+<br />
+Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbNombre" runat="server" Width="235px"></asp:TextBox>
+<br />
+Domicilio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbDomicilio" runat="server" Width="212px"></asp:TextBox>
+<br />
+Tel�fono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tbTelefono" runat="server" Width="227px"></asp:TextBox>
+<br />
+Ciudad: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<asp:DropDownList ID="ddlCiudad" runat="server" AutoPostBack="True">
+</asp:DropDownList>
+<br />
+    <br />
+<br />
+Carreras que se imparten:
+<br />
+<br />
+<asp:CheckBoxList ID="cblCarreras" runat="server" CssClass="auto-style1" style="z-index: 1">
+</asp:CheckBoxList>
+<br />
+    <br />
+Agregar servicios adicionales&nbsp;
+<br />
+    <asp:GridView ID="gvServicios" runat="server">
+<Columns>
+    <asp:TemplateField HeaderText="A�adir">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="En campus">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox2" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox2" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Costo extra">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox3" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox3" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
+</Columns>
+</asp:GridView>
+<br />
+<br />
+    �reas acad�micas&nbsp;&nbsp;&nbsp;
+<br />
+    <asp:GridView ID="gvAreas" runat="server">
+<Columns>
+    <asp:TemplateField HeaderText="A�adir">
+        <EditItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:CheckBox ID="CheckBox1" runat="server" />
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Num. Lics.">
+        <ItemTemplate>
+            <asp:TextBox ID="tbLics" runat="server"></asp:TextBox>
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Num. Mtros.">
+        <ItemTemplate>
+            <asp:TextBox ID="tbMtros" runat="server"></asp:TextBox>
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Num. Docs.">
+        <ItemTemplate>
+            <asp:TextBox ID="tbDocs" runat="server"></asp:TextBox>
+        </ItemTemplate>
+    </asp:TemplateField>
+</Columns>
+</asp:GridView>
+<br />
+    <asp:Label ID="lbMsg" runat="server"></asp:Label>
+<br />
+<asp:Button ID="btAlta" runat="server" Text="Dar Plantel de Alta" CssClass="button" OnClick="btAlta_Click" />
+<br />
+<asp:HyperLink ID="hl1" runat="server" NavigateUrl="../Index.aspx" CssClass="link">Volver al inicio</asp:HyperLink>
+<br />
+</div>
+</form>
 </body>
 </html>
