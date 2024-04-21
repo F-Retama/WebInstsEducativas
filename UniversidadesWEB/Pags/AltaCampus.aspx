@@ -133,13 +133,24 @@ Agregar servicios adicionales&nbsp;
         </ItemTemplate>
     </asp:TemplateField>
     <asp:TemplateField HeaderText="Num. Lics.">
-            <ItemTemplate>
-                <asp:TextBox ID="tbLics" runat="server" Width="100%"></asp:TextBox>
-            </ItemTemplate>
-        </asp:TemplateField>
+        <ItemTemplate>
+            <asp:TextBox ID="tbLics" runat="server"></asp:TextBox>
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Num. Mtros.">
+        <ItemTemplate>
+            <asp:TextBox ID="tbMtros" runat="server"></asp:TextBox>
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Num. Docs.">
+        <ItemTemplate>
+            <asp:TextBox ID="tbDocs" runat="server"></asp:TextBox>
+        </ItemTemplate>
+    </asp:TemplateField>
 </Columns>
 </asp:GridView>
 <br />
+    <asp:Label ID="lbMsg" runat="server"></asp:Label>
 <br />
 <asp:Button ID="btAlta" runat="server" Text="Dar Plantel de Alta" CssClass="button" OnClick="btAlta_Click" />
 <br />

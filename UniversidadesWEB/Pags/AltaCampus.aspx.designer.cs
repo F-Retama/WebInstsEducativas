@@ -96,6 +96,15 @@ namespace UniversidadesWEB.Pags
         protected global::System.Web.UI.WebControls.GridView gvAreas;
 
         /// <summary>
+        /// lbMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbMsg;
+
+        /// <summary>
         /// btAlta control.
         /// </summary>
         /// <remarks>
