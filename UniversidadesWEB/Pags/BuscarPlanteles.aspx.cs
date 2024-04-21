@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/* La página Buscar Planteles sirve para que dado un carrera y ciudad, se muestran las instituciones y campus que 
+    ofrecen dicha carrera en la ciudad (punto 4), y tiene un hyperlink para regresar a index. */
 namespace UniversidadesWEB.Pags
 {
     public partial class BuscarPlanteles : System.Web.UI.Page
@@ -51,11 +53,13 @@ namespace UniversidadesWEB.Pags
                 }
             }
         }
-
+        /* Cuando se selecciona una combinación válida de institución y carrera, 
+        y se pica el botón se llena el grid view con las instituciones */
         protected void btBuscar_Click(object sender, EventArgs e)
         {
             carrera = context.Carrera.Find(Int32.Parse(ddlCarrera.SelectedValue));
             ciudad = context.Ciudad.Find(Int32.Parse(ddlCiudad.SelectedValue));
+            /* Checa que se hayan seleccionado una institución Y una carrera, y si no avisa con el label */
             if (ddlCarrera.SelectedIndex == 0 || ddlCiudad.SelectedIndex == 0)
             {
                 gvResp.DataSource = null;
@@ -71,6 +75,7 @@ namespace UniversidadesWEB.Pags
                 lsCampInst = context.Database.SqlQuery<CampInst>(cadSql).ToList();
                 gvResp.DataSource = lsCampInst;
                 lbMensaje.Text = "";
+                /* Se cambia el label para avisar si no hay resultados de una combinación válida  */
                 if (lsCampInst.Count == 0)
                 {
                     lbMensaje.Text = "No hay resultados que cumplan la búsqueda.";

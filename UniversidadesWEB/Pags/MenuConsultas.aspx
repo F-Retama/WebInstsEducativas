@@ -5,6 +5,11 @@
 <head runat="server">
     <title>Seleccionar Consultas</title>
     <style>
+
+        /* Clase para declarar atributos de la página Buscar Planteles y darle un estilo común con las demas páginas 
+        <style> es el estilo en CSS para que los elementos estén centrados, con letra moderna, y los atributos estilizados */
+
+        /* Características para el contenedor esté centrado en la página y tenga una letra uniforme */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f5f9;
@@ -15,6 +20,7 @@
             align-items: center;
             height: 100vh;
         }
+        /* Características para que la parte de adentro de la página se azul y centrada */
         .container {
             text-align: center;
             background-color: #e3f2fd;
@@ -22,6 +28,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        /* Características para el CssClass="button": */
         .button {
             background-color: #1565c0;
             color: #fff;
@@ -37,20 +44,24 @@
         .button:hover {
             background-color: #0d47a1;
         }
+        /* Características para el CssClass="label": */
         .label {
             color: #1565c0;
             font-weight: bold;
         }
+        /* Características para el CssClass="message": */
         .message {
             color: #388e3c;
             font-style: italic;
         }
+        /* Características para el CssClass="gridview": */
         .gridview {
             margin-top: 20px;
             width: 80%;
             margin-left: auto;
             margin-right: auto;
         }
+        /* Características para el CssClass="link": */
         .link {
             color: #1565c0;
             text-decoration: none;

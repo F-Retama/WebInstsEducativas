@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Entity;
 
+/* La pÃ¡gina Alta Campus sirve para dar de alta toda la informaciÃ³n asociada con un nuevo campus (punto 5).  
+    Esto involucra muchas tablas, por lo cual tiene muchos atributos. */
 namespace UniversidadesWEB.Pags
 {
 	public partial class AltaCampus : System.Web.UI.Page
 	{
-		//Variables de clase
+ 		/* DeclaraciÃ³n de variables */
 		UnisEntities context = new UnisEntities();
 		string cadSql;
 		List<Campus> campus;
@@ -32,7 +34,7 @@ namespace UniversidadesWEB.Pags
 			{
 				lbMsg.Text = "";
 
-				//Se obtiene el id del campus que se registrará
+				//Se obtiene el id del campus que se registrarï¿½
 				cadSql = $"select * from Campus where idCam = (select max(idCam) from Campus)";
 				campus = context.Campus.SqlQuery(cadSql).ToList();
 				idCampus = campus[0].idCam + random.Next(10);
@@ -40,13 +42,13 @@ namespace UniversidadesWEB.Pags
 				//Llenado de los dropdownlists
 				cadSql = $"select * from Institucion";
 				lsInstitucion = context.Institucion.SqlQuery(cadSql).ToList();
-				ddlInstitucion.Items.Add(new ListItem("Sin selección", "-1"));
+				ddlInstitucion.Items.Add(new ListItem("Sin selecciï¿½n", "-1"));
 				foreach (Institucion i in lsInstitucion)
 					ddlInstitucion.Items.Add(new ListItem(i.nombreIns.ToString(), i.idIns.ToString()));
 
 				cadSql = $"select * from Ciudad";
 				lsCiudad = context.Ciudad.SqlQuery(cadSql).ToList();
-				ddlCiudad.Items.Add(new ListItem("Sin selección", "-1"));
+				ddlCiudad.Items.Add(new ListItem("Sin selecciï¿½n", "-1"));
 				foreach (Ciudad c in lsCiudad)
 					ddlCiudad.Items.Add(new ListItem(c.nombreCiu.ToString(), c.idCiu.ToString()));
 
@@ -70,12 +72,12 @@ namespace UniversidadesWEB.Pags
 
 		protected void btAlta_Click(object sender, EventArgs e)
 		{
-			//se verifica que se tenga la información necesaria
+			//se verifica que se tenga la informaciï¿½n necesaria
 			if (ddlInstitucion.SelectedIndex>0 && ddlCiudad.SelectedIndex>0) {
 				//altas en CampusCarrera
 				foreach (ListItem car in cblCarreras.Items)
 				{
-					//creación del objeto de clase Campus
+					//creaciï¿½n del objeto de clase Campus
 					campus[0] = new Campus();
 					campus[0].idCam = idCampus;
 					campus[0].idCiu = Convert.ToInt32(ddlCiudad.SelectedValue);
@@ -83,14 +85,14 @@ namespace UniversidadesWEB.Pags
 					campus[0].domicilio = tbDomicilio.Text;
 					campus[0].telefono = tbTelefono.Text;
 
-					//se revisa si la carrera está seleccionada
+					//se revisa si la carrera estï¿½ seleccionada
 					if (car.Selected)
 					{
-						//para cada carrera, se revisa que la institución ya la imparta
+						//para cada carrera, se revisa que la instituciï¿½n ya la imparta
 						institucionCarrera = context.InstitucionCarrera.Find(Convert.ToInt32(ddlInstitucion.SelectedValue), Convert.ToInt32(car.Value));
 						if (institucionCarrera is null)
 						{
-							lbMsg.Text += $"\n{ddlInstitucion.Text} no imparte {car.Text}, no se añadió";
+							lbMsg.Text += $"\n{ddlInstitucion.Text} no imparte {car.Text}, no se aï¿½adiï¿½";
 						}
 						else //alta en campus carrera
 						{
@@ -122,10 +124,10 @@ namespace UniversidadesWEB.Pags
 						//context.CampusServicio.Add(campusServicio);
 					}
 				}
-				//altas de las áreas académicas
+				//altas de las ï¿½reas acadï¿½micas
 				foreach (GridViewRow area in gvAreas.Rows)
 				{
-					//se revisa que el área se haya seleccionado
+					//se revisa que el ï¿½rea se haya seleccionado
 					cb = (CheckBox)area.Cells[0].Controls[0];
 					if (cb.Checked)
 					{
