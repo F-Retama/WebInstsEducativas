@@ -15,8 +15,7 @@ namespace UniversidadesWEB.Pags
  		/* Declaración de variables */
 		UnisEntities context = new UnisEntities();
 		string cadSql;
-		List<Campus> lsCampus;
-		int idCampus;
+		int nuevoIdCam;
 		Random random = new Random();
 		Campus campus;
 		List<Ciudad> lsCiudad;
@@ -33,13 +32,6 @@ namespace UniversidadesWEB.Pags
 		{
 			if (!IsPostBack)
 			{
-				lbMsg.Text = "";
-
-				//Se obtiene el id del campus que se registrará
-				cadSql = $"select * from Campus where idCam = (select max(idCam) from Campus)";
-				lsCampus = context.Campus.SqlQuery(cadSql).ToList();
-				idCampus = lsCampus[0].idCam + random.Next(10);
-				
 				//Llenado de los dropdownlists
 				cadSql = $"select * from Institucion";
 				lsInstitucion = context.Institucion.SqlQuery(cadSql).ToList();
@@ -64,6 +56,7 @@ namespace UniversidadesWEB.Pags
 				lsServicio = context.Servicio.SqlQuery(cadSql).ToList();
 				gvServicios.DataSource = lsServicio;
 				gvServicios.DataBind(); 
+
 				cadSql = $"select * from AreaAcademica";
 				lsAreaAcademica = context.AreaAcademica.SqlQuery(cadSql).ToList();
 				gvAreas.DataSource = lsAreaAcademica;
@@ -73,20 +66,27 @@ namespace UniversidadesWEB.Pags
 
 		protected void btAlta_Click(object sender, EventArgs e)
 		{
+			lbMsg.Text = "";
 			//se verifica que se tenga la información necesaria
-			if (ddlInstitucion.SelectedIndex>0 && ddlCiudad.SelectedIndex>0) {
+			if (ddlInstitucion.SelectedIndex > 0 && ddlCiudad.SelectedIndex > 0)
+			{
+				//creación y alta del objeto de la entidad Campus
+				//priemro se genera el id del campus que se registrará
+				cadSql = $"select * from Campus where idCam = (select max(idCam) from Campus)";
+				campus = context.Campus.SqlQuery(cadSql).ToList()[0];
+				nuevoIdCam = campus.idCam + random.Next(1, 10);
+				campus = new Campus();
+				campus.idCam = nuevoIdCam;
+				campus.idCiu = Convert.ToInt32(ddlCiudad.SelectedValue);
+				campus.nombreCam = tbNombre.Text;
+				campus.domicilio = tbDomicilio.Text;
+				campus.telefono = tbTelefono.Text;
+				context.Campus.Add(campus);
+				context.SaveChanges();
+
 				//altas en CampusCarrera
 				foreach (ListItem car in cblCarreras.Items)
 				{
-					//creación y alta del objeto de la entidad Campus
-					campus = new Campus();
-					campus.idCam = idCampus;
-					campus.idCiu = Convert.ToInt32(ddlCiudad.SelectedValue);
-					campus.nombreCam = tbNombre.Text;
-					campus.domicilio = tbDomicilio.Text;
-					campus.telefono = tbTelefono.Text;
-					//context.Campus.Add(campus);
-
 					//se revisa si la carrera está seleccionada
 					if (car.Selected)
 					{
@@ -100,11 +100,11 @@ namespace UniversidadesWEB.Pags
 						{
 							//se crea una instancia del vínculo m-n
 							campusCarrera = new CampusCarrera();
-							campusCarrera.idCam = idCampus;
+							campusCarrera.idCam = nuevoIdCam;
 							campusCarrera.idIns = Convert.ToInt32(ddlInstitucion.SelectedValue);
 							campusCarrera.idCar = Convert.ToInt32(car.Value);
 							campusCarrera.blank = null;
-							//context.CampusCarrera.Add(campusCarrera);
+							context.CampusCarrera.Add(campusCarrera);
 						}
 					}
 				}
@@ -117,13 +117,13 @@ namespace UniversidadesWEB.Pags
 					{
 						//se crea una instancia del vínculo m-n
 						campusServicio = new CampusServicio();
-						campusServicio.idCam = idCampus;
+						campusServicio.idCam = nuevoIdCam;
 						campusServicio.idSer = Convert.ToInt32(ser.Cells[3].Text);
 						cb = (CheckBox)ser.Cells[1].FindControl("CheckBox2");
 						campusServicio.mismoLugar = Convert.ToInt16(cb.Checked);
 						cb = (CheckBox)ser.Cells[2].FindControl("CheckBox3");
 						campusServicio.costoExtra = Convert.ToInt16(cb.Checked);
-						//context.CampusServicio.Add(campusServicio);
+						context.CampusServicio.Add(campusServicio);
 					}
 				}
 				//altas de las Áreas académicas
@@ -137,21 +137,24 @@ namespace UniversidadesWEB.Pags
 						{
 							//se crea una instancia del vínculo m-n
 							campusArea = new CampusArea();
-							campusArea.idCam = idCampus;
+							campusArea.idCam = nuevoIdCam;
 							campusArea.idArea = Convert.ToInt32(area.Cells[4].Text);
 							campusArea.profsLic = Convert.ToInt32(((TextBox)area.Cells[1].FindControl("tbLics")).Text);
 							campusArea.profsMa = Convert.ToInt32(((TextBox)area.Cells[1].FindControl("tbMtros")).Text);
 							campusArea.profsDoc = Convert.ToInt32(((TextBox)area.Cells[1].FindControl("tbDocs")).Text);
-							//context.CampusArea.Add(campusArea);
+							context.CampusArea.Add(campusArea);
 						}
 						//control para entradas no numéricas en los textboxes
 						catch (Exception)
-                        {
+						{
 							lbMsg.Text += $"Datos del área {area.Cells[5].Text} no válidos, no se añadió.\n";
-                        }
+						}
 					}
 				}
+				context.SaveChanges();
 			}
+			else
+				lbMsg.Text += "Se debe elegir una institucipon y un área.\n";
 		}
     }
 }
