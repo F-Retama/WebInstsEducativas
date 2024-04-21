@@ -132,6 +132,11 @@ Agregar servicios adicionales&nbsp;
             <asp:CheckBox ID="CheckBox1" runat="server" />
         </ItemTemplate>
     </asp:TemplateField>
+    <asp:TemplateField HeaderText="Num. Lics.">
+            <ItemTemplate>
+                <asp:TextBox ID="tbLics" runat="server" Width="100%"></asp:TextBox>
+            </ItemTemplate>
+        </asp:TemplateField>
 </Columns>
 </asp:GridView>
 <br />
