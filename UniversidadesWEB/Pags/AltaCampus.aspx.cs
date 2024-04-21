@@ -71,7 +71,7 @@ namespace UniversidadesWEB.Pags
 			if (ddlInstitucion.SelectedIndex > 0 && ddlCiudad.SelectedIndex > 0)
 			{
 				//creación y alta del objeto de la entidad Campus
-				//priemro se genera el id del campus que se registrará
+				//primero se genera el id del campus que se registrará
 				cadSql = $"select * from Campus where idCam = (select max(idCam) from Campus)";
 				campus = context.Campus.SqlQuery(cadSql).ToList()[0];
 				nuevoIdCam = campus.idCam + random.Next(1, 10);
